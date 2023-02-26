@@ -1,7 +1,5 @@
-FROM openjdk
+FROM java:8
 
-WORKDIR /usr/src/app
+COPY target/book-crud-app.jar book-crud-app.jar
 
-COPY . usr/src/app
-
-CMD ["java", "-jar", "book-crud-app.jar"]
+CMD java -jar book-crud-app.jar

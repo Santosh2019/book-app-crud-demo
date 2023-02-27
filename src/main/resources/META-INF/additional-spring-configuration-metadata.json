@@ -1,5 +1,22 @@
-{"properties": [{
-  "name": "book-api.messages.Book-list-save",
-  "type": "java.lang.String",
-  "description": "A description for 'book-api.messages.Book-list-save'"
-}]}
+{"properties": [
+  {
+    "name": "book-api.messages.Book-list-save",
+    "type": "java.lang.String",
+    "description": "A description for 'book-api.messages.Book-list-save'"
+  },
+  {
+    "name": "services.docker-mysql.image",
+    "type": "java.lang.String",
+    "description": "A description for 'services.docker-mysql.image'"
+  },
+  {
+    "name": "services.docker-mysql.environment",
+    "type": "java.lang.String",
+    "description": "A description for 'services.docker-mysql.environment'"
+  },
+  {
+    "name": "version",
+    "type": "java.lang.String",
+    "description": "A description for 'version'"
+  }
+]}

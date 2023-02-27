@@ -1,4 +1,4 @@
-FROM java:8
+FROM jeanblanchard/java:8
 
 COPY target/book-crud-app.jar book-crud-app.jar
 

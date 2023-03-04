@@ -2,7 +2,7 @@ server:
   port: 9090
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    #driverClassName: com.mysql.jdbc.Driver
     password: root
     url: jdbc:mysql://localhost:3306/springboot
     username: root
@@ -12,23 +12,3 @@ spring:
       ddl-auto: update
       use-new-id-generator-mappings: false
     show-sql: true
-version: '3'
-services:
-  docker-mysql:
-    image: mysql:8.0.32
-    environment:
-      -MYSQL_ROOT_PASSWORD=root
-        -MYSQL_DATABASE=springboot
-          -MYSQL_USER=root
-             -MYSQL_PASSWORD=root
-  ports:
-      - 3307:3306
-
-  app:
-    image: app:latest
-    ports:
-       - 8091:8091
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/database?autoReconnect=true&useSSL=false
-    depends_on:
-       - docker-mysql

@@ -1,5 +1,5 @@
 FROM jeanblanchard/java:8
 
-COPY target/book-crud-app.jar book-crud-app.jar
+COPY target/book-app-crud-demo.jar book-app-crud-demo.jar
 
-CMD java -jar book-crud-app.jar
+CMD java -jar book-app-crud-demo.jar.jar

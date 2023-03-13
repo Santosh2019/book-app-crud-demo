@@ -16,8 +16,9 @@ public interface BookAppService {
 	public boolean update(Book name);
 
 	public boolean delete(Integer bookId);
-	
-	public String getNames(String bookName);
 
-	
+	public void deleteAllBooks();
+
+	public List<String> findByName();
+
 }

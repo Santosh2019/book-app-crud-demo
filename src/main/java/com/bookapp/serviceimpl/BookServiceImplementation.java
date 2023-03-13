@@ -26,7 +26,7 @@ public class BookServiceImplementation implements BookAppService {
 	@Override
 	public boolean update(Book name) {
 		Book isUpdated = bookRepository.save(name);
-		return isUpdated.getBookId()!= null;
+		return isUpdated.getBookId() != null;
 	}
 
 	@Override
@@ -60,9 +60,16 @@ public class BookServiceImplementation implements BookAppService {
 	}
 
 	@Override
-	public String getNames(String bookName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> findByName() {
+		List<String> list = bookRepository.findByName();
+		return list;
+	}
+
+	@Override
+	public void deleteAllBooks() {
+
+		bookRepository.deleteAll();
+
 	}
 
 }

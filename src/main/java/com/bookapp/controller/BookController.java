@@ -83,11 +83,22 @@ public class BookController {
 	@GetMapping("/getbooklist")
 	public ResponseEntity<List<Book>> getAllBookList() {
 		List<Book> books = serviceImplementaion.getAllBooks();
-		if (books.isEmpty()) {
-			return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<List<Book>>(books, HttpStatus.BAD_REQUEST);
-		}
+		return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+	}
+
+	@GetMapping("/findByName")
+	public ResponseEntity<List<String>> findByName() {
+
+		List<String> books = serviceImplementaion.findByName();
+
+		return new ResponseEntity<List<String>>(books, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/deleteAll")
+	public ResponseEntity<String> removeAll() {
+		String msg = "Deleted";
+		serviceImplementaion.deleteAllBooks();
+		return new ResponseEntity<>(msg, HttpStatus.OK);
 	}
 
 }

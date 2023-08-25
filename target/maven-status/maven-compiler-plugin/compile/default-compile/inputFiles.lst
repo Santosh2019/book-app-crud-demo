@@ -1,5 +1,5 @@
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\service\BookAppService.java
-F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\dao\BookAppRepo.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\dao\BookRepository.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\controller\BookController.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\configuration\SwaggerConfig.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\properties\AppProperties.java

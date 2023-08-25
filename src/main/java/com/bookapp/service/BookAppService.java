@@ -6,19 +6,17 @@ import com.bookapp.bean.Book;
 import com.bookapp.exception.RecordNotFoundException;
 
 public interface BookAppService {
+	Book add(Book name);
 
-	public Book add(Book name);
+	List<Book> getAllBooks();
 
-	public List<Book> getAllBooks();
+	Book getBook(Integer bookId) throws RecordNotFoundException;
 
-	public Book getBook(Integer bookId) throws RecordNotFoundException;
+	boolean update(Book name);
 
-	public boolean update(Book name);
+	boolean delete(Integer bookId);
 
-	public boolean delete(Integer bookId);
+	void deleteAllBooks();
 
-	public void deleteAllBooks();
-
-	public List<String> findByName();
-
+	// public List<String> findByName();
 }

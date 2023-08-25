@@ -10,7 +10,6 @@ public class BookAppCrudDemoApplication {
 
 		SpringApplication.run(BookAppCrudDemoApplication.class, args);
 
-	
 	}
 
 }

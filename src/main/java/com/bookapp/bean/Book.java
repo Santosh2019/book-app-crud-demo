@@ -1,33 +1,46 @@
 package com.bookapp.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer bookId;
+    private Integer bookPrice;
+    private String bookName;
+/*
+    public Integer getBookId() {
+        return bookId;
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer bookId;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
 
-	private Integer bookPrice;
+    public Integer getBookPrice() {
+        return bookPrice;
+    }
 
-	private String bookName;
-	
-	  public Integer getBookPrice() { return bookPrice; }
-	  
-	  public Integer getBookId() { return bookId; }
-	  
-	  public void setBookId(Integer bookId) { this.bookId = bookId; }
-	  
-	  public void setBookPrice(Integer bookPrice) { this.bookPrice = bookPrice; }
-	  
-	  public String getBookName() { return bookName; }
-	  
-	  public void setBookName(String bookName) { this.bookName = bookName; }
-	 
+    public void setBookPrice(Integer bookPrice) {
+        this.bookPrice = bookPrice;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }*/
 }

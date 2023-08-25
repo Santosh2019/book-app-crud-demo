@@ -1,17 +1,27 @@
-
-version: "3"
-
+vcersion: "3"
 services:
+  sb-app:
+    image: sb-app
+    networks:
+      - springmysql-net
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8.0.32
+    networks:
+      - springmysql-net
+    environment:
+      - MYSQL_ROOT_PASSWORD= root
+      - MYSQL_DATABASE= springboot  
 
-  boot-app:
-  image: book-app-crud-demo
-  ports:
-   - "8080" : 8080
-  depends_on:
-   - mysql-db
+networks:
+  springmysql-net: 
 
-  mysql-db:
-  image: mysql:8
-  environment:
-   - MYSQL_ROOT_PASSWORD = root
-   - MYSQL_DATABASE = root
+
+
+
+
+ 

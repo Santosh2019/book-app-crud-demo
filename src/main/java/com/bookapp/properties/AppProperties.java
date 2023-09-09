@@ -1,10 +1,10 @@
 package com.bookapp.properties;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @EnableConfigurationProperties
 @Configuration

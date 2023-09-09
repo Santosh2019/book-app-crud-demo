@@ -4,7 +4,6 @@ import com.bookapp.bean.Book;
 import com.bookapp.dao.BookRepository;
 import com.bookapp.exception.RecordNotFoundException;
 import com.bookapp.service.BookAppService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +34,6 @@ public class BookServiceImplementation implements BookAppService {
             bookRepository.deleteById(bookId);
             status = true;
         } catch (Exception e) {
-
             e.printStackTrace();
         }
         return status;
@@ -56,10 +54,6 @@ public class BookServiceImplementation implements BookAppService {
         List<Book> list = bookRepository.findAll();
         return list;
     }
-    /*
-     * @Override public List<String> findByName() { List<String> list =
-     * bookRepository.findByName(""); return list; }
-     */
 
     @Override
     public void deleteAllBooks() {

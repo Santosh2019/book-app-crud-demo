@@ -1,9 +1,9 @@
 package com.bookapp.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import lombok.Getter;
+import com.bookapp.appconstant.AppConstant;
+import com.bookapp.bean.Book;
+import com.bookapp.exception.RecordNotFoundException;
+import com.bookapp.serviceimpl.BookServiceImplementation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.bookapp.appconstant.AppConstant;
-import com.bookapp.bean.Book;
-import com.bookapp.exception.RecordNotFoundException;
-import com.bookapp.properties.AppProperties;
-import com.bookapp.serviceimpl.BookServiceImplementation;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -31,19 +28,8 @@ public class BookController {
 
     Map<String, String> messages;
 
-    public BookController() {
-        super();
-    }
-
-    public BookController(BookServiceImplementation serviceImplementaion, AppProperties appProperties) {
-        super();
-        this.serviceImplementaion = serviceImplementaion;
-        //this.messages = appProperties.getMessages();
-    }
-
     @GetMapping("/test")
     public String getStatus() {
-
         return "Server is running";
     }
 
@@ -57,7 +43,8 @@ public class BookController {
 
     @PutMapping("/update/{bookId}")
     public ResponseEntity<String> updateBook(@PathVariable("bookId") Integer bookId, @RequestBody Book bookName) {
-        String status = AppConstant.EMPTY_SIR;
+        logger.info("book id is {}:" + bookId);
+        String status;
         boolean book = serviceImplementaion.update(bookName);
         if (book) {
             status = AppConstant.RECORD_UPDATED_SUCCESS;
@@ -65,16 +52,16 @@ public class BookController {
         } else {
             status = AppConstant.RECORD_NOT_UPDATED;
         }
-        return new ResponseEntity<String>(status, HttpStatus.OK);
+        return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{bookId}")
     public ResponseEntity<String> deleteBook(@PathVariable("bookId") Integer bookId) {
         boolean deleted = serviceImplementaion.delete(bookId);
         if (deleted) {
-            return new ResponseEntity<String>("Record Deleted SuccessFully", HttpStatus.OK);
+            return new ResponseEntity<>("Record Dleted SuccessFully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<String>("Invalid Book ID", HttpStatus.OK);
+            return new ResponseEntity<>("Invalid Book ID", HttpStatus.OK);
         }
     }
 
@@ -85,23 +72,19 @@ public class BookController {
 
             return new ResponseEntity<Book>(isCheck, HttpStatus.OK);
         }
-        return new ResponseEntity<Book>(isCheck, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(isCheck, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/getBookList")
     public ResponseEntity<List<Book>> getAllBookList() {
         List<Book> books = serviceImplementaion.getAllBooks();
-        return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+        if (books.isEmpty()) {
+            return new ResponseEntity<>(books, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    /*
-     * @GetMapping("/findByName") public ResponseEntity<List<String>> findByName() {
-     *
-     * List<String> books = serviceImplementaion.findByName();
-     *
-     * return new ResponseEntity<List<String>>(books, HttpStatus.OK); }
-     *
-     */
     @DeleteMapping("/deleteAll")
     public ResponseEntity<String> removeAll() {
         String msg = "Deleted";

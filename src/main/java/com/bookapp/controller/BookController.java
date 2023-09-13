@@ -1,7 +1,7 @@
 package com.bookapp.controller;
 
 import com.bookapp.appconstant.AppConstant;
-import com.bookapp.bean.Book;
+import com.bookapp.model.BookDto;
 import com.bookapp.exception.RecordNotFoundException;
 import com.bookapp.serviceimpl.BookServiceImplementation;
 import org.slf4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-
 
 @RestController
 @CrossOrigin
@@ -35,20 +34,17 @@ public class BookController {
 
 
     @PostMapping("/addBook")
-    public ResponseEntity<Book> addBook(@RequestBody Book bookName) {
-        Book book = serviceImplementaion.add(bookName);
-        logger.info("Books Recorded created Successfully");
-        return new ResponseEntity<Book>(book, HttpStatus.CREATED);
+    public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDtoNameDto) {
+        BookDto bookDto = serviceImplementaion.add(bookDtoNameDto);
+        return new ResponseEntity<>(bookDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{bookId}")
-    public ResponseEntity<String> updateBook(@PathVariable("bookId") Integer bookId, @RequestBody Book bookName) {
-        logger.info("book id is {}:" + bookId);
+    public ResponseEntity<String> updateBook(@PathVariable("bookId") Integer bookId, @RequestBody BookDto bookDtoName) {
         String status;
-        boolean book = serviceImplementaion.update(bookName);
+        boolean book = serviceImplementaion.update(bookDtoName);
         if (book) {
             status = AppConstant.RECORD_UPDATED_SUCCESS;
-
         } else {
             status = AppConstant.RECORD_NOT_UPDATED;
         }
@@ -61,35 +57,32 @@ public class BookController {
         if (deleted) {
             return new ResponseEntity<>("Record Dleted SuccessFully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Invalid Book ID", HttpStatus.OK);
+            return new ResponseEntity<>("Invalid BookDto ID", HttpStatus.OK);
         }
     }
 
-    @GetMapping("/getSinglBook/{bookId}")
-    public ResponseEntity<Book> getSingleBook(@PathVariable("bookId") Integer bookId) throws RecordNotFoundException {
-        Book isCheck = serviceImplementaion.getBook(bookId);
-        if (isCheck != null) {
-
-            return new ResponseEntity<Book>(isCheck, HttpStatus.OK);
+    @GetMapping("/getSingleBook/{bookId}")
+    public ResponseEntity<BookDto> getSingleBook(@PathVariable("bookId") Integer bookId) throws RecordNotFoundException {
+        BookDto isCheck = serviceImplementaion.getBook(bookId);
+        if (null != isCheck) {
+            return new ResponseEntity<>(isCheck, HttpStatus.OK);
         }
         return new ResponseEntity<>(isCheck, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/getBookList")
-    public ResponseEntity<List<Book>> getAllBookList() {
-        List<Book> books = serviceImplementaion.getAllBooks();
-        if (books.isEmpty()) {
-            return new ResponseEntity<>(books, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<List<BookDto>> getAllBookList() {
+        List<BookDto> bookDtos = serviceImplementaion.getAllBooks();
+        if (bookDtos.isEmpty()) {
+            return new ResponseEntity<>(bookDtos, HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(books, HttpStatus.OK);
+        return new ResponseEntity<>(bookDtos, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteAll")
     public ResponseEntity<String> removeAll() {
-        String msg = "Deleted";
+        String messageDeleted = AppConstant.RECORD_DELETED;
         serviceImplementaion.deleteAllBooks();
-        return new ResponseEntity<>(msg, HttpStatus.OK);
+        return new ResponseEntity<>(messageDeleted, HttpStatus.OK);
     }
-
 }

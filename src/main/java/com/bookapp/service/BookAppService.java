@@ -1,18 +1,18 @@
 package com.bookapp.service;
 
-import com.bookapp.bean.Book;
+import com.bookapp.model.BookDto;
 import com.bookapp.exception.RecordNotFoundException;
 
 import java.util.List;
 
 public interface BookAppService {
-	Book add(Book name);
+	BookDto add(BookDto name);
 
-	List<Book> getAllBooks();
+	List<BookDto> getAllBooks();
 
-	Book getBook(Integer bookId) throws RecordNotFoundException;
+	BookDto getBook(Integer bookId) throws RecordNotFoundException;
 
-	boolean update(Book name);
+	boolean update(BookDto name);
 
 	boolean delete(Integer bookId);
 

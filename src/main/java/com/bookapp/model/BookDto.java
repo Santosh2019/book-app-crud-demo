@@ -1,15 +1,15 @@
-package com.bookapp.bean;
+package com.bookapp.model;
 
-import lombok.*;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "book_tbl")
 @NoArgsConstructor
 @ToString
-public class Book {
+public class BookDto {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer bookId;

@@ -82,7 +82,7 @@
         
         
         
-        <property name="java-output-path" value="/book-app-crud-demo/target/classes"/>
+        <property name="java-output-path" value="/bookDto-app-crud-demo/target/classes"/>
                                                                                                 
         
         

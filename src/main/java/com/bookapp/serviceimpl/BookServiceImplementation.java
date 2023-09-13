@@ -1,6 +1,6 @@
 package com.bookapp.serviceimpl;
 
-import com.bookapp.bean.Book;
+import com.bookapp.model.BookDto;
 import com.bookapp.dao.BookRepository;
 import com.bookapp.exception.RecordNotFoundException;
 import com.bookapp.service.BookAppService;
@@ -16,14 +16,14 @@ public class BookServiceImplementation implements BookAppService {
     private BookRepository bookRepository;
 
     @Override
-    public Book add(Book name) {
-        Book book = bookRepository.save(name);
-        return book;
+    public BookDto add(BookDto name) {
+        BookDto bookDto = bookRepository.save(name);
+        return bookDto;
     }
 
     @Override
-    public boolean update(Book name) {
-        Book isUpdated = bookRepository.save(name);
+    public boolean update(BookDto name) {
+        BookDto isUpdated = bookRepository.save(name);
         return isUpdated.getBookId() != null;
     }
 
@@ -40,18 +40,18 @@ public class BookServiceImplementation implements BookAppService {
     }
 
     @Override
-    public Book getBook(Integer bookId) throws RecordNotFoundException {
-        Optional<Book> checkBookId = bookRepository.findById(bookId);
+    public BookDto getBook(Integer bookId) throws RecordNotFoundException {
+        Optional<BookDto> checkBookId = bookRepository.findById(bookId);
         if (checkBookId.isPresent()) {
             return checkBookId.get();
         } else {
-            throw new RecordNotFoundException("No Book record exist for given id");
+            throw new RecordNotFoundException("No BookDto record exist for given id");
         }
     }
 
     @Override
-    public List<Book> getAllBooks() {
-        List<Book> list = bookRepository.findAll();
+    public List<BookDto> getAllBooks() {
+        List<BookDto> list = bookRepository.findAll();
         return list;
     }
 

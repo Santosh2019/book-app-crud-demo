@@ -7,6 +7,14 @@ public class AppConstant {
 
     public static final String EMPTY_SIR = "";
 
+    public static final String USER_AVAILABLE = "User is available";
+
+    public static final String USER_NOT_AVAILABLE = "User not found, please register first";
+    
+    public static final String REGISTRATION = "Registration Successfully";
+
+    public static final String REGISTRATION_FAILED = "Please try again";
+
     public static final String BOOK_LIST_SAVE = "BookDto List Saved Successfully";
 
     public static final String RECORD_UPDATED_SUCCESS = "Record Updated Successfully";

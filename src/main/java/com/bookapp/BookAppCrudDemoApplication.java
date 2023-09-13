@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BookAppCrudDemoApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		SpringApplication.run(BookAppCrudDemoApplication.class, args);
+        SpringApplication.run(BookAppCrudDemoApplication.class, args);
 
-	}
+    }
 
 }

@@ -1,10 +1,15 @@
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\service\BookAppService.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\configuration\WebSecurity.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\dao\BookRepository.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\controller\BookController.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\configuration\SwaggerConfig.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\properties\AppProperties.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\serviceimpl\BookServiceImplementation.java
-F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\bean\Book.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\exception\RecordNotFoundException.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\BookAppCrudDemoApplication.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\Utils\EmailUtils.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\model\AccountRegistrationDto.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\dao\AccountRepository.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\model\LoginDto.java
 F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\appconstant\AppConstant.java
+F:\STSWorkplace\book-app-crud-demo\src\main\java\com\bookapp\model\BookDto.java

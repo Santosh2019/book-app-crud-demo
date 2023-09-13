@@ -1,6 +1,19 @@
+spring:
+  mail:
+    host: your-smtp-host
+    port: your-smtp-port
+    username: santoshlimbale76@gmail.com
+    password: Developer&143
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   port: 8080
-spring:
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
@@ -19,4 +32,4 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
   file:
-    name: BookDto-App.log
+    name: book-application.log

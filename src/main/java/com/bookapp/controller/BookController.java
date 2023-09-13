@@ -1,8 +1,9 @@
 package com.bookapp.controller;
 
 import com.bookapp.appconstant.AppConstant;
-import com.bookapp.model.BookDto;
 import com.bookapp.exception.RecordNotFoundException;
+import com.bookapp.model.AccountRegistrationDto;
+import com.bookapp.model.BookDto;
 import com.bookapp.serviceimpl.BookServiceImplementation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,15 +35,41 @@ public class BookController {
 
 
     @PostMapping("/addBook")
-    public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDtoNameDto) {
-        BookDto bookDto = serviceImplementaion.add(bookDtoNameDto);
+    public ResponseEntity<BookDto> addBook(@RequestBody BookDto book) {
+        BookDto bookDto = serviceImplementaion.add(book);
         return new ResponseEntity<>(bookDto, HttpStatus.CREATED);
     }
 
+    @PostMapping("/bookRegistration")
+    public ResponseEntity<String> registration(@RequestBody AccountRegistrationDto accountRegistrationDto) {
+        serviceImplementaion.accountRegistration(accountRegistrationDto);
+        String registrationMessage;
+        if (null != accountRegistrationDto) {
+            registrationMessage = AppConstant.REGISTRATION;
+            return new ResponseEntity<>(registrationMessage, HttpStatus.CREATED);
+        } else {
+            registrationMessage = AppConstant.REGISTRATION_FAILED;
+            return new ResponseEntity<>(registrationMessage, HttpStatus.CREATED);
+        }
+    }
+
+    @PostMapping("/checkLogin/{userName}")
+    public ResponseEntity<String> checkLogin(@RequestParam String userName, @RequestParam String password) {
+        String checkLogin = AppConstant.EMPTY_SIR;
+        AccountRegistrationDto user = serviceImplementaion.checkLogin(userName);
+
+        if (user != null && user.getPassword().equals(password)) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid login credentials");
+        }
+    }
+
     @PutMapping("/update/{bookId}")
-    public ResponseEntity<String> updateBook(@PathVariable("bookId") Integer bookId, @RequestBody BookDto bookDtoName) {
+    public ResponseEntity<String> updateBook(@PathVariable("bookId") Integer bookId, @RequestBody BookDto bookName) {
         String status;
-        boolean book = serviceImplementaion.update(bookDtoName);
+        boolean book = serviceImplementaion.update(bookName);
         if (book) {
             status = AppConstant.RECORD_UPDATED_SUCCESS;
         } else {
@@ -55,9 +82,9 @@ public class BookController {
     public ResponseEntity<String> deleteBook(@PathVariable("bookId") Integer bookId) {
         boolean deleted = serviceImplementaion.delete(bookId);
         if (deleted) {
-            return new ResponseEntity<>("Record Dleted SuccessFully", HttpStatus.OK);
+            return new ResponseEntity<>("Record Deleted SuccessFully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Invalid BookDto ID", HttpStatus.OK);
+            return new ResponseEntity<>("Invalid Book ID", HttpStatus.OK);
         }
     }
 
@@ -72,11 +99,11 @@ public class BookController {
 
     @GetMapping("/getBookList")
     public ResponseEntity<List<BookDto>> getAllBookList() {
-        List<BookDto> bookDtos = serviceImplementaion.getAllBooks();
-        if (bookDtos.isEmpty()) {
-            return new ResponseEntity<>(bookDtos, HttpStatus.BAD_REQUEST);
+        List<BookDto> bookDto = serviceImplementaion.getAllBooks();
+        if (bookDto.isEmpty()) {
+            return new ResponseEntity<>(bookDto, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(bookDtos, HttpStatus.OK);
+        return new ResponseEntity<>(bookDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteAll")

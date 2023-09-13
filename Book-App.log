@@ -328,3 +328,9 @@ Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieva
 2023-09-13 17:34:39.196  INFO 13572 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 2023-09-13 17:34:39.633  INFO 13572 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
 2023-09-13 17:34:39.643  INFO 13572 --- [main] com.bookapp.BookAppCrudDemoApplication   : Started BookAppCrudDemoApplication in 5.865 seconds (JVM running for 6.406)
+2023-09-13 17:46:37.288  INFO 13572 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-13 17:46:37.289  INFO 13572 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-13 17:46:37.301  INFO 13572 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2023-09-13 17:47:31.962  WARN 13572 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Illegal unquoted character ((CTRL-CHAR, code 10)): has to be escaped using backslash to be included in string value
+ at [Source: (PushbackInputStream); line: 3, column: 25] (through reference chain: com.bookapp.model.Book["bookName"])]
+2023-09-13 17:51:07.570  INFO 13572 --- [http-nio-8080-exec-7] com.bookapp.controller.BookController    : Books Recorded created Successfully
